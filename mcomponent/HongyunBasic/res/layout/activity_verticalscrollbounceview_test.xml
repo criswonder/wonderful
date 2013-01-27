@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="#9990" >
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <test.scrolllayout.VerticalScrollBounceView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dip"
+                    android:background="#7788"
+                    android:gravity="center"
+                    android:text="search me !!"
+                    android:textSize="39sp" />
+
+                 <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dip"
+                            android:background="#3388"
+                            android:gravity="center"
+                            android:text="fuck it"
+                            android:textSize="39sp" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dip"
+                            android:background="@android:color/darker_gray"
+                            android:gravity="center"
+                            android:text="fuck it to"
+                            android:textSize="39sp" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dip"
+                            android:background="#4466"
+                            android:gravity="center"
+                            android:text="fuck it to to tooo"
+                            android:textSize="39sp" />
+                    </LinearLayout>
+            </LinearLayout>
+        </test.scrolllayout.VerticalScrollBounceView>
+    </FrameLayout>
+</LinearLayout>

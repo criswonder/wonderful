@@ -1,0 +1,68 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fukcksd" />
+    <!-- <include -->
+    <!-- android:id="@+id/firstlayout" -->
+    <!-- layout="@layout/first" /> -->
+
+
+    <!--
+             <include
+            android:id="@+id/secondlayout"
+            layout="@layout/two" />
+    -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff" >
+    </ImageView>
+
+    <com.example.third.MyPager
+        android:id="@+id/secondlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000" >
+
+        <!-- <include -->
+        <!-- android:id="@+id/secondlayout" -->
+        <!-- layout="@layout/two" /> -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/v1" >
+        </ImageView>
+    </com.example.third.MyPager>
+
+    <com.example.third.Pager
+        android:id="@+id/secondlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000" >
+
+        <!-- <include -->
+        <!-- android:id="@+id/secondlayout" -->
+        <!-- layout="@layout/two" /> -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/v1" >
+        </ImageView>
+    </com.example.third.Pager>
+
+    <!-- <Button -->
+    <!-- android:id="@+id/btn" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:text="fdkfk	" /> -->
+
+</FrameLayout>

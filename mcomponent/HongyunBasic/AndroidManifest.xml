@@ -1,0 +1,284 @@
+<<<<<<< HEAD
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hongyunbasic"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation"
+            android:label="test_animation" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation1"
+            android:label="test_animation" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation2"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation3"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation4"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <!-- ===========================================测试OnDraw方法============================================= -->
+        <activity
+            android:name="test.ondraw.TestSaveAndRestore"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.AsyncTask_HandlerThread.RockIt"
+            android:label="test_asyncTask_handlerThread" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.scrolllayout.FooScrollTest"
+            android:label="test.scrolllayout.FooScrollTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.scrolllayout.PagingViewTest"
+            android:label="test.scrolllayout.PagingViewTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.scrolllayout.VerticalScrollBounceViewTest"
+            android:label="可以竖直拖动的view" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.imageroundcorner.TestImageRoundCorner"
+            android:label="TestImageRoundCorner" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.alarmmanager.SetupAlarm"
+            android:label="TestImageRoundCorner" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="test.broadcastreceiver.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+                 <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="test.alarmmanager.AlarmReceiver" >
+            <intent-filter>
+                <action android:name="fuck.fuck.ffff" >
+                </action>
+            </intent-filter>
+        </receiver>
+
+    </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hongyunbasic"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation"
+            android:label="test_animation" >
+           <!--  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter> -->
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation1"
+            android:label="test_animation" >
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter> -->
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation2"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation3"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.animation.TestAnimation4"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <!-- ===========================================测试OnDraw方法============================================= -->
+        <activity
+            android:name="test.ondraw.TestSaveAndRestore"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.AsyncTask_HandlerThread.RockIt"
+            android:label="test_asyncTask_handlerThread" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+		<activity
+            android:name="test.scrolllayout.FooScrollTest"
+            android:label="test.scrolllayout.FooScrollTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+		<activity
+            android:name="test.scrolllayout.PagingViewTest"
+            android:label="test.scrolllayout.PagingViewTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+		<activity
+            android:name="test.scrolllayout.VerticalScrollBounceViewTest"
+            android:label="可以竖直拖动的view" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+		<activity
+            android:name="test.ptr.TestPullToRefresh"
+            android:label="TestPullToRefresh" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+                
+    </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+>>>>>>> 2447f81f6553dfafed46895d0b8c87d1cbb48185
+</manifest>

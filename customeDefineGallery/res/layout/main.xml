@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:myapps="http://schemas.android.com/apk/res/com.homer.mycontrol"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+
+    <com.homer.mycontrol.Pager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        myapps:pageWidth="250dip" >	 <!-- 自定义Pager宽度-->
+
+        <!-- <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#0a0"
+            android:text="Pager 1"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#00a"
+            android:text="Pager 2"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#a0a"
+            android:text="Pager 3"
+            android:focusable="true" /> -->
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Pager 4"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#0aa"
+            android:text="Pager 5"
+            android:focusable="true" />
+
+    </com.homer.mycontrol.Pager>
+
+    <com.homer.mycontrol.PagerBar
+        android:id="@+id/control"
+        android:layout_width="fill_parent"
+        android:layout_height="4dip"
+        android:layout_margin="8dip"
+        myapps:roundRectRadius="2dip" />	 <!-- 自定义圆角 -->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="left" />
+
+        <Button
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="right" />
+
+    </LinearLayout>
+
+</LinearLayout>

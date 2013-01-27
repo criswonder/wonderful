@@ -1,0 +1,52 @@
+#adb 查看日志|连接模拟器
+adb logcat *:S MaoApplication:D StatusData:D
+adb -d  logcat *:S MaoApplication:D StatusData:D //查看真机的日志信息
+adb -e shell //shell到模拟器 比较适合同时连接了模拟器和真机的时候使用。
+adb -d shell //shell到真机
+adb *:E mao:D
+adb -s emulator-5556  uninstall com.example.android.apis //多个模拟器时 操作某个模拟器
+#monkey test
+adb shell monkey -p your.package.name -v 9999
+#查看sqlite中的数据
+
+#操作sdcard
+1 创建sdcard文件 ./mksdcard -l g 256M mysdcard
+2 往sdcard里面写文件的时候要有权限
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+3 Android的架构是怎么样的，简单的说android是一个特定的java虚拟机dalvik，底层是linux的内核。java代码编译生成dalvik
+可以执行的文件。
+
+
+# ctrl+l 可以输入文件路径dd
+
+#dbms识别小米1s为问号的时候
+先进入到androidhome/plateforms-tools/ 下面；
+然后切换为root，执行 adb kill-server ; 然后adb start-server就好了
+
+target Java: CtsWebkitTestCases (out/target/common/obj/APPS/CtsWebkitTestCases_intermediates/classes)
+target Java: CtsWidgetTestCases (out/target/common/obj/APPS/CtsWidgetTestCases_intermediates/classes)
+注意：某些输入文件使用或覆盖了已过时的 API。
+注意：要了解详细信息，请使用 -Xlint:deprecation 重新编译。
+target Java: FrameworkTestTests (out/target/common/obj/APPS/FrameworkTestTests_intermediates/classes)
+注意：cts/tests/tests/text/src/android/text/style/cts/ImageSpanTest.java 使用或覆盖了已过时的 API。
+注意：要了解详细信息，请使用 -Xlint:deprecation 重新编译。
+target Java: SignatureTestTests (out/target/common/obj/APPS/SignatureTestTests_intermediates/classes)
+target Java: SmokeTest (out/target/common/obj/APPS/SmokeTest_intermediates/classes)
+注意：某些输入文件使用或覆盖了已过时的 API。
+注意：要了解详细信息，请使用 -Xlint:deprecation 重新编译。
+Install: out/target/product/generic/system/app/Bluetooth.apk
+Install: out/target/product/generic/system/app/Calendar.apk
+target Jar: services (out/target/common/obj/JAVA_LIBRARIES/services_intermediates/javalib.jar)
+ 'out/target/common/obj/JAVA_LIBRARIES/services_intermediates/classes.dex' as 'classes.dex'...
+Install: out/target/product/generic/system/framework/services.jar
+Finding NOTICE files: out/target/product/generic/obj/NOTICE_FILES/hash-timestamp
+注意：某些输入文件使用或覆盖了已过时的 API。
+注意：要了解详细信息，请使用 -Xlint:deprecation 重新编译。
+注意：某些输入文件使用了未经检查或不安全的操作。
+注意：要了解详细信息，请使用 -Xlint:unchecked 重新编译。
+Combining NOTICE files: out/target/product/generic/obj/NOTICE.html
+注意：某些输入文件使用或覆盖了已过时的 API。
+注意：要了解详细信息，请使用 -Xlint:deprecation 重新编译。
+Target system fs image: out/target/product/generic/obj/PACKAGING/systemimage_unopt_intermediates/system.img
+Install system fs image: out/target/product/generic/system.img
+Installed file list: out/target/product/generic/installed-files.txt

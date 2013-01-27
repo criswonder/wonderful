@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_weight="15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        			android:padding="20dip"
+        			android:background="@android:color/black"
+         >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click me , i am button" />
+
+        <com.example.third.CustomeScrollView
+            android:id="@+id/my_cust_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            					android:background="@android:color/darker_gray"
+            >
+        </com.example.third.CustomeScrollView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="left" />
+
+        <Button
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="right" />
+    </LinearLayout>
+
+</LinearLayout>
