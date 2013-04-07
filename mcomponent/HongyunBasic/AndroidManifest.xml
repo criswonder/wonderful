@@ -60,6 +60,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="test.animation.TestTranslateAnimation"
+            android:label="test_animation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="test.animation.TestAnimation3"
             android:label="test_animation" >
             <intent-filter>
@@ -108,6 +117,15 @@
         <activity
             android:name="test.scrolllayout.PagingViewTest"
             android:label="test.scrolllayout.PagingViewTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.tabactivity.BottomTabActivity"
+            android:label="test.tabactivity.BottomTabActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
