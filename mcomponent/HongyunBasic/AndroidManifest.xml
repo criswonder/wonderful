@@ -3,10 +3,11 @@
     package="com.example.hongyunbasic"
     android:versionCode="1"
     android:versionName="1.0" >
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="15" />
@@ -33,8 +34,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
-            </intent-filter>
-
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -46,8 +46,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
-            </intent-filter>
-
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -137,6 +136,7 @@
             android:label="可以竖直拖动的view" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
             </intent-filter>
         </activity>
@@ -145,6 +145,7 @@
             android:label="TestImageRoundCorner" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
             </intent-filter>
         </activity>
@@ -153,6 +154,7 @@
             android:label="TestImageRoundCorner" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
             </intent-filter>
         </activity>
@@ -161,6 +163,16 @@
             android:label="TopImageSwitchView" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.statelistdrawable.TestStateListDrawable"
+            android:label="TestStateListDrawable" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
             </intent-filter>
         </activity>
@@ -169,6 +181,7 @@
             android:label="TestTouchEvent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
             </intent-filter>
         </activity>
@@ -177,7 +190,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" >
                 </action>
-                 <category android:name="android.intent.category.HOME" />
+
+                <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
         <receiver android:name="test.alarmmanager.AlarmReceiver" >
@@ -186,6 +200,6 @@
                 </action>
             </intent-filter>
         </receiver>
-
     </application>
+
 </manifest>
