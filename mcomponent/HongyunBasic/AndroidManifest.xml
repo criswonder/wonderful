@@ -19,11 +19,11 @@
         <activity
             android:name=".MainActivity"
             android:label="test_animation" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter> -->
+<!--                 <action android:name="android.intent.action.MAIN" /> -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
+<!--             </intent-filter> -->
         </activity>
         <activity
             android:name="test.animation.TestAnimation"
@@ -128,7 +128,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.SAMPLE_CODE1" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
