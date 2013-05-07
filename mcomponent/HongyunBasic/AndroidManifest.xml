@@ -34,7 +34,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -46,7 +46,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.SAMPLE_CODE1" />
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
