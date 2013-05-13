@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/zhinan_radio_s"
+        android:background="@color/gold"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -46,7 +46,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="6dp"
-            android:background="@color/zhinan_radio_s" />
+            android:background="@color/gold" />
 
         <Button
             android:id="@+id/chexian_prize_btn"
