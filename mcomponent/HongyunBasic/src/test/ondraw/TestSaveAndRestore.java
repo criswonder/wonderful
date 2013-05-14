@@ -16,14 +16,14 @@ public class TestSaveAndRestore extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		setContentView(new CustomeView(this));
+		// setContentView(new CustomeView(this));
 		setContentView(R.layout.activity_test_save_and_restore);
-		
+
 		LinearLayout ll = (LinearLayout) findViewById(R.id.main_layout);
-		 CustomeView cust = new CustomeView(this);
-		 cust.setBackgroundColor(Color.parseColor("#ffffffff"));
-		 LayoutParams params = new LayoutParams(300, 300);
-		 ll.addView(cust, params);
+		CustomeView cust = new CustomeView(this);
+		cust.setBackgroundColor(Color.parseColor("#ffffffff"));
+		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		ll.addView(cust, params);
 	}
 
 	@Override
@@ -31,5 +31,5 @@ public class TestSaveAndRestore extends Activity {
 		getMenuInflater().inflate(R.menu.activity_test_save_and_restore, menu);
 		return true;
 	}
-	
+
 }

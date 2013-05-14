@@ -80,13 +80,14 @@ public class ImageGridFragment extends Activity implements AdapterView.OnItemCli
 
         ImageCacheParams cacheParams = new ImageCacheParams(this, IMAGE_CACHE_DIR);
 
-        cacheParams.setMemCacheSizePercent(0.25f); // Set memory cache to 25% of app memory
+        cacheParams.setMemCacheSizePercent(0.1f); // Set memory cache to 25% of app memory
 
         // The ImageFetcher takes care of loading images into our ImageView children asynchronously
         mImageFetcher = new ImageFetcher(this, mImageThumbSize);// 初始化resouce，创建http cache dir， 以及要显示的图片大小
         mImageFetcher.setLoadingImage(R.drawable.empty_photo);
-        mImageFetcher.addImageCache(MyApplication.getContext(), cacheParams); // imagecache在这一步初始化，内存的文件的cache。注意 文件cache
+        // imagecache在这一步初始化，内存和文件的cache。注意 文件cache
         // 是在异步线程上做的
+        mImageFetcher.addImageCache(MyApplication.getContext(), cacheParams); 
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
