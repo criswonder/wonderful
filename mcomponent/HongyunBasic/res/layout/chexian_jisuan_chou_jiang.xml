@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+     >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/gold"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dimen_120_dip"
+            android:background="#FEFEFE"
+            android:orientation="vertical" >
+
+            <com.hongyun.component.CheXianNumberView
+                android:id="@+id/chexian_prize_number_view"
+                android:layout_width="@dimen/dimen_210_dip"
+                android:layout_height="@dimen/dimen_30_dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/dimen_5_dip"
+                android:layout_marginTop="@dimen/dimen_30_dip" />
+<!--             <com.xixi.component.CheXianNumberView
+                android:id="@+id/chexian_prize_number_view"
+                android:layout_width="@dimen/dimen_210_dip"
+                android:layout_height="@dimen/dimen_30_dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/dimen_5_dip"
+                android:layout_marginTop="@dimen/dimen_30_dip" /> -->
+
+            <TextView
+                android:id="@+id/chexian_prize_result_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_18_dip"
+                android:text="抱歉，没有中奖！"
+                android:textColor="#ce0909"
+                android:textSize="@dimen/dimen_20_dip"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="6dp"
+            android:background="@color/gold" />
+
+        <Button
+            android:id="@+id/chexian_prize_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dimen_44_dip"
+            android:layout_marginTop="@dimen/dimen_20_dip"
+            android:layout_marginLeft="@dimen/dimen_20_dip"
+            android:layout_marginRight="@dimen/dimen_20_dip"
+            android:background="@color/gold"
+            android:text="立即抽奖"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dimen_24_dip" />
+        <Button
+            android:id="@+id/btn_loop"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dimen_44_dip"
+            android:layout_marginTop="@dimen/dimen_20_dip"
+            android:layout_marginLeft="@dimen/dimen_20_dip"
+            android:layout_marginRight="@dimen/dimen_20_dip"
+            android:background="@color/gold"
+            android:text="loop"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dimen_24_dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20_dip"
+            android:layout_marginLeft="@dimen/dimen_23_dip"
+            android:text="注：每天只能参与一次抽奖"
+            android:textColor="#ce0909"
+            android:textSize="@dimen/dimen_14_dip" />
+    </LinearLayout>
+
+</LinearLayout>

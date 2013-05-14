@@ -17,12 +17,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.xixi.android.MucangConfig;
+
 public class MainActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		MucangConfig.setApplication(getApplication());
 
 		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
 		mainIntent.addCategory(Intent.CATEGORY_SAMPLE_CODE + "1");
