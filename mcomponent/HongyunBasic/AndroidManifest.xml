@@ -28,8 +28,6 @@
         <activity
             android:name="test.animation.TestAnimation"
             android:label="test_animation" >
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
