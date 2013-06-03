@@ -19,7 +19,7 @@
         <activity
             android:name=".MainActivity"
             android:label="test_animation" >
-            <intent-filter>
+        <!--     <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -220,6 +220,15 @@
 
 <!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
+        </activity>
+        <activity
+            android:name="test.webview.TestWebView"
+            android:label="测试webview" >
+           <!--  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
         </activity>
 
         <receiver android:name="test.broadcastreceiver.BootReceiver" >

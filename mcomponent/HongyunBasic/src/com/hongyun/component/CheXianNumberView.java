@@ -25,6 +25,10 @@ public class CheXianNumberView extends View {
     private int cellTopY;
     private int centerY;
     private Paint paint;
+    
+    private int number;
+    private float[] translates;// 每个数字的位置
+    private final int textPadding = MiscUtil.getPxByDip(10);
 
 	public CheXianNumberView(Context context) {
 		super(context);
@@ -55,8 +59,32 @@ public class CheXianNumberView extends View {
 	}
 
 	public void setNumber(final int newNumber, final boolean animation) {
+		post(new Runnable() {
+			
+			@Override
+			public void run() {
+				number = newNumber;
+				translates = getNumberYLocations();
+				postInvalidate();
+			}
+		});
 	}
 	
+	protected float[] getNumberYLocations() {
+		float[] toHeights = new float[cellCount];
+		for(int i=0;i<cellCount;i++){
+			int width = cellCount -i;
+			int value = (number % (int)Math.pow(10, width)) / (int)(Math.pow(10, width-1));
+			int height = 0;
+			for(int index=0;index<value;index++){
+				Rect rect = new Rect();
+				paint.getTextBounds(String.valueOf(index), 0, 1, rect);
+				height +=rect.height()+textPadding;
+			}
+			toHeights[i] = centerY -height;
+		}
+		return toHeights;
+	}
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
@@ -84,6 +112,35 @@ public class CheXianNumberView extends View {
 		
 	}
 	private void drawNumbers(Canvas canvas) {
+		for(int i=0;i<cellCount;i++){
+			canvas.save();
+			Rect numberBounds = getNumberBounds(i);
+			numberBounds.top = numberBounds.top+MiscUtil.getPxByDip(1);
+			canvas.clipRect(numberBounds);
+			float startX = numberBounds.left+numberBounds.width()/2;
+			float startY = translates[i];
+			drawNumbersCenter(canvas, startX,startY);
+			canvas.restore();
+		}
+	}
+	private void drawNumbersCenter(Canvas canvas, float startX, float startY) {
+		Rect bounds = new Rect();
+		while(true){
+			
+			for(int i=0;i<10;i++){
+				String text = String.valueOf(i);
+				paint.getTextBounds(text, 0, 1, bounds);
+				float x = startX - bounds.width()/2;
+				float y = startY +(bounds.height()/2);
+				if(y>-10){
+					canvas.drawText(text, x, y, paint);
+				}
+				startY += bounds.height()+textPadding;
+				if(startY>getHeight()){
+					return;
+				}
+			}
+		}
 		
 	}
 	private void drawBg(Canvas canvas) {
