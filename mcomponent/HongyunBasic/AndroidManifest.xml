@@ -23,7 +23,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
         <activity
             android:name="test.animation.TestAnimation"
@@ -177,6 +177,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="test.photo.ChoosePhotoFromAlbumOrCamera"
+            android:label="ChoosePhotoFromAlbumOrCamera" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="test.statelistdrawable.TestStateListDrawable"
             android:label="TestStateListDrawable" >
             <intent-filter>
@@ -209,7 +218,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
 

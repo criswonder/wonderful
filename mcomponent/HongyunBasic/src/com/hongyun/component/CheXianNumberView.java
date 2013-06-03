@@ -73,10 +73,12 @@ public class CheXianNumberView extends View {
 		centerY = h/2;
 	}
 	public int getCellBgWidth(){
-		return MiscUtil.getPxByDip(24);
+		return 40;
+//		return MiscUtil.getPxByDip(24);
 	}
 	public int getCellBgHeight(){
-		return MiscUtil.getPxByDip(24);
+		return 40;
+//		return MiscUtil.getPxByDip(24);
 	}
 	private void drawMasks(Canvas canvas) {
 		
