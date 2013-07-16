@@ -3,8 +3,10 @@ package test.wheel.adapter;
 
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -215,19 +217,12 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
     	
         view.setTextColor(textColor);
         view.setGravity(Gravity.CENTER);
-        view.setTextSize(textSize);
+        view.setTextSize(TypedValue.COMPLEX_UNIT_SP,22);
         view.setLines(1);
         view.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
-//        view.setWidth(viewWidth);
-        view.setWidth(500);
-        view.setText("233");
+        view.setWidth(viewWidth);
         view.setBackgroundColor(R.color.gold);
         Log.d(TAG , "*************textView.setText(200)");
-//        Paint mPaint = new Paint();
-//        mPaint.setTextSize(textSize);
-//        float w = mPaint.measureText(String.valueOf(view.getText()) );
-//        view.setWidth((int)w);
-//        TaoLog.Logd(TAG , "*************configureTextView width="+w);
         //view.setGravity(Gravity.CENTER_HORIZONTAL);
 //        if(view.getMeasuredHeight()>0)
 //        {
