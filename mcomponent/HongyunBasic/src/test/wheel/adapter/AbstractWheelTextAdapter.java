@@ -186,10 +186,10 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
                 if (text == null) {
                     text = "";
                 }
-                textView.setText(text);
                 if (itemResourceId == TEXT_VIEW_ITEM_RESOURCE) {
                     configureTextView(textView);
                 }
+                textView.setText(text);
             }
             return convertView;
         }
@@ -219,7 +219,8 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
         view.setLines(1);
         view.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
 //        view.setWidth(viewWidth);
-        view.setWidth(200);
+        view.setWidth(500);
+        view.setText("233");
         view.setBackgroundColor(R.color.gold);
         Log.d(TAG , "*************textView.setText(200)");
 //        Paint mPaint = new Paint();
