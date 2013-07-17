@@ -211,12 +211,30 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="test.anr.TestANR"
+            android:label="testANR" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="test.looperhandler.HandlerTestActivity"
+            android:label="HandlerTestActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="test.chexiannumberview.TestCheXianNumberView"
             android:label="test.chexiannumberview" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-<!--                 <category android:name="android.intent.category.LAUNCHER" /> -->
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
             </intent-filter>
         </activity>
         <activity

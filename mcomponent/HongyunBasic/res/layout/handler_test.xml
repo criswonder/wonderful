@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/a"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:hint="Test looper"
+        android:padding="6dp"
+        android:text="Test looper" />
+
+    <Button
+        android:id="@+id/b"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:padding="6dp"
+        android:text="Exit" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>
