@@ -22,6 +22,8 @@ import com.example.hongyunbasic.R;
 
 
 public class WheelView extends View {
+	private final String TAG=this.getClass().getSimpleName();
+	private   String SCR = TAG;
 
 	/** Top and bottom shadows colors */
 	private static final int[] SHADOWS_COLORS = new int[] { 0xFF111111,
@@ -117,8 +119,10 @@ public class WheelView extends View {
 	
 	// Scrolling listener
 	WheelScroller.ScrollingListener scrollingListener = new WheelScroller.ScrollingListener() {
+		String localTag = "scrollingListener";
         @Override
 		public void onStarted() {
+        	Log.d(TAG, localTag+"-----------onStarted------");
             isScrollingPerformed = true;
             notifyScrollingListenersAboutStart();
         }
@@ -126,7 +130,7 @@ public class WheelView extends View {
         @Override
 		public void onScroll(int distance) {
         	
-        	Log.d("scr", "onScroll  " + "distance:" + distance);
+        	Log.d(TAG, localTag+"onScroll  " + "distance:" + distance);
             doScroll(distance);
             
 //            int height = getHeight();
@@ -149,6 +153,7 @@ public class WheelView extends View {
         
         @Override
 		public void onFinished() {
+        	Log.d(TAG, localTag+"-----------onFinished------");
             if (isScrollingPerformed) {
                 notifyScrollingListenersAboutEnd();
                 isScrollingPerformed = false;
@@ -160,7 +165,8 @@ public class WheelView extends View {
 
         @Override
 		public void onJustify() {
-            if (Math.abs(scrollingOffset) > WheelScroller.MIN_DELTA_FOR_SCROLLING) {
+            Log.d(TAG, localTag+"-----------onJustify------");
+        	if (Math.abs(scrollingOffset) > WheelScroller.MIN_DELTA_FOR_SCROLLING) {
                 scroller.scroll(scrollingOffset, 0);
             }
         }
@@ -190,9 +196,9 @@ public class WheelView extends View {
 	 * 
 	 * @param count the desired count for visible items
 	 */
-	public void setVisibleItems(int count) {
-		visibleItems = count;
-	}
+//	public void setVisibleItems(int count) {
+//		visibleItems = count;
+//	}
 
 	/**
 	 * Gets view adapter
@@ -335,7 +341,7 @@ public class WheelView extends View {
 	 * @param animated the animation flag
 	 */
 	public void setCurrentItem(int index, boolean animated) {
-		Log.d("scr", "setCurrentItem index=" + index);
+		Log.d(SCR, "setCurrentItem index=" + index);
 		if (viewAdapter == null || viewAdapter.getItemsCount() == 0) {
 			return; // throw?
 		}
@@ -490,45 +496,13 @@ public class WheelView extends View {
 	
 	if (itemsLayout != null && itemsLayout.getChildAt(0) != null) {
 		itemWidth = itemsLayout.getChildAt(0).getWidth();
+		Log.d(TAG, "getItemWidth	itemWidth="+itemWidth);
 		return itemWidth;
 	}
 	
+	Log.d(TAG, "getItemWidth	getWidth() / visibleItems="+getWidth() / visibleItems);
 	return getWidth() / visibleItems;
 }
-
-	/**
-	 * Calculates control width and creates text layouts
-	 * @param widthSize the input layout width
-	 * @param mode the layout mode
-	 * @return the calculated control width
-	 */
-//	private int calculateLayoutWidth(int widthSize, int mode) {
-//		initResourcesIfNecessary();
-//
-//		// TODO: make it static
-//		itemsLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-//	    itemsLayout.measure(MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.UNSPECIFIED), 
-//	                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-//		int width = itemsLayout.getMeasuredWidth();
-//
-//		if (mode == MeasureSpec.EXACTLY) {
-//			width = widthSize;
-//		} else {
-//			width += 2 * PADDING;
-//
-//			// Check against our minimum width
-//			width = Math.max(width, getSuggestedMinimumWidth());
-//
-//			if (mode == MeasureSpec.AT_MOST && widthSize < width) {
-//				width = widthSize;
-//			}
-//		}
-//		
-//        itemsLayout.measure(MeasureSpec.makeMeasureSpec(width - 2 * PADDING, MeasureSpec.EXACTLY), 
-//                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-//
-//		return width;
-//	}
 
 	private int calculateLayoutHeight(int heightSize, int mode) {
 		initResourcesIfNecessary();
@@ -565,7 +539,7 @@ public class WheelView extends View {
 		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 		int widthSize = MeasureSpec.getSize(widthMeasureSpec);
 		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-
+		Log.d(TAG, "onMeasure	"+"widthSize="+widthSize+",heightSize="+heightSize);
 		buildViewForMeasuring();
 		
 		//int width = calculateLayoutWidth(widthSize, widthMode);
@@ -593,11 +567,12 @@ public class WheelView extends View {
 		}
 	}
 
-		setMeasuredDimension(width, height);
+		setMeasuredDimension(200, height);
 	}
 	
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+    	Log.d(TAG, "onLayout	changed="+changed+",l="+l+",t="+t+",r="+r+",b="+b);
     	layout(r - l, b - t);
     }
 
@@ -607,18 +582,14 @@ public class WheelView extends View {
      * @param height the layout height
      */
     private void layout(int width, int height) {
-		//int itemsWidth = width - 2 * PADDING;
-		//itemsLayout.layout(0, 0, itemsWidth, height);
-    	
-    	//bylc
     	int itemsHeight = height - 2 * padding;
-		itemsLayout.layout(0, 0, width, itemsHeight);
+		itemsLayout.layout(0, 0, width, itemsHeight); //如果注释掉，itemsLayout里面的东西画不出来哦
     }
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		
+		Log.d(TAG, "onDraw	");
 		if (viewAdapter != null && viewAdapter.getItemsCount() > 0) {
 	        updateView();
 	        refreshItemLooks();
@@ -626,34 +597,26 @@ public class WheelView extends View {
 	        drawCenterRect(canvas);
 		}
 		
-        drawShadows(canvas);
 	}
-
-	/**
-	 * Draws shadows on top and bottom of control
-	 * @param canvas the canvas for drawing
-	 */
-	private void drawShadows(Canvas canvas) {
-//		int width = (int)(1.5 * getItemWidth());
-//		leftShadow.setBounds(0, 0, width, getHeight());
-//		leftShadow.draw(canvas);
-//
-//		rightShadow.setBounds(getWidth() - width, 0, getWidth(), getHeight());
-//		rightShadow.draw(canvas);
-	}
-
 	/**
 	 * Draws items
 	 * @param canvas the canvas for drawing
 	 */
 	private void drawItems(Canvas canvas) {
+		Log.d(TAG, "drawItems	currentItem="+currentItem+",firstItem="+firstItem
+			+",getItemWidth="+getItemWidth()+",getWidth="+getWidth()+",scrollingOffset="+scrollingOffset+",padding" +
+					"="+padding);
 		canvas.save();
 		
 //		int top = (currentItem - firstItem) * getItemHeight() + (getItemHeight() - getHeight()) / 2;
 //		canvas.translate(PADDING, - top + scrollingOffset);
 		//bylc
-		int left = (currentItem - firstItem) * getItemWidth() + (getItemWidth() - getWidth()) / 2;
-		canvas.translate( - left + scrollingOffset, padding);
+		int left = -(currentItem - firstItem) * getItemWidth() + (getWidth()-getItemWidth()) / 2;
+		Log.d(TAG, "drawItems	left="+left);
+		canvas.translate(left +scrollingOffset, padding);
+//		int left = (currentItem - firstItem) * getItemWidth() + (getItemWidth() - getWidth()) / 2;
+//		Log.d(TAG, "drawItems	left="+left);
+//		canvas.translate( - left + scrollingOffset, padding);
 		
 		
 		itemsLayout.draw(canvas);
@@ -716,7 +679,7 @@ public class WheelView extends View {
 	 */
 	private void doScroll(int delta) {
 		
-		Log.d("scr", "doScroll   " + "delta: " + delta);
+		Log.d(TAG, "doScroll   " + "delta: " + delta);
 		
 		scrollingOffset += delta;
 		
@@ -780,12 +743,12 @@ public class WheelView extends View {
 	 * @param time scrolling duration
 	 */
 	public void scroll(int itemsToScroll, int time) {
-		Log.d("scr", "scroll");
+		Log.d(SCR, "scroll");
 		
 		int distance = itemsToScroll * getItemWidth() - scrollingOffset;
-		Log.d("scr", "distance:"+distance);
-		Log.d("scr", "itemsToScroll:"+itemsToScroll);
-		Log.d("scr", "getItemWidth:"+getItemWidth());
+		Log.d(SCR, "distance:"+distance);
+		Log.d(SCR, "itemsToScroll:"+itemsToScroll);
+		Log.d(SCR, "getItemWidth:"+getItemWidth());
 		scroller.scroll(distance, time);
 	}
 	
@@ -826,9 +789,9 @@ public class WheelView extends View {
 	 * @return true if items are rebuilt
 	 */
 	private boolean rebuildItems() {
-		Log.d("scr", "rebuildItems");
-		Log.d("scr", "currentItem:" + currentItem);
-		Log.d("scr", "firstItem:" + firstItem);
+		Log.d(SCR, "rebuildItems");
+		Log.d(SCR, "currentItem:" + currentItem);
+		Log.d(SCR, "firstItem:" + firstItem);
 		boolean updated = false;
 		ItemsRange range = getItemsRange();
 		if (itemsLayout != null) {
@@ -846,7 +809,7 @@ public class WheelView extends View {
 		
 		if (firstItem > range.getFirst() && firstItem <= range.getLast()) {
 			for (int i = firstItem - 1; i >= range.getFirst(); i--) {
-				if (!addViewItem(i, true)) {
+				if (!addViewItemToItemsLayout(i, true)) {
 				    break;
 				}
 				firstItem = i;
@@ -857,7 +820,7 @@ public class WheelView extends View {
 		
 		int first = firstItem;
 		for (int i = itemsLayout.getChildCount(); i < range.getCount(); i++) {
-			if (!addViewItem(firstItem + i, false) && itemsLayout.getChildCount() == 0) {
+			if (!addViewItemToItemsLayout(firstItem + i, false) && itemsLayout.getChildCount() == 0) {
 			    first++;
 			}
 		}
@@ -882,6 +845,7 @@ public class WheelView extends View {
 	 * Creates item layouts if necessary
 	 */
 	private void createItemsLayout() {
+		Log.d(TAG, "createItemsLayout");
 		if (itemsLayout == null) {
 			itemsLayout = new LinearLayout(getContext());
 			itemsLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -893,6 +857,7 @@ public class WheelView extends View {
 	 */
 	private void buildViewForMeasuring() {
 		// clear all items
+		Log.d(TAG, "buildViewForMeasuring");
 		if (itemsLayout != null) {
 			recycle.recycleItems(itemsLayout, firstItem, new ItemsRange());			
 		} else {
@@ -901,9 +866,14 @@ public class WheelView extends View {
 		
 		// add views
 		int addItems = visibleItems / 2;
+		Log.d(TAG, "buildViewForMeasuring	currentItem="+currentItem+",addItems="+addItems);
 		for (int i = currentItem + addItems; i >= currentItem - addItems; i--) {
-			if (addViewItem(i, true)) {
+			Log.d(TAG, "buildViewForMeasuring	for loop i="+i);
+			if (addViewItemToItemsLayout(i, true)) {
 			    firstItem = i;
+			    Log.d(TAG, "buildViewForMeasuring	addViewItemToItemsLayout success");
+			}else{
+				Log.d(TAG, "buildViewForMeasuring	addViewItemToItemsLayout failed");
 			}
 		}
 	}
@@ -914,17 +884,30 @@ public class WheelView extends View {
 	 * @param first the flag indicates if view should be first
 	 * @return true if corresponding item exists and is added
 	 */
-	private boolean addViewItem(int index, boolean first) {
+	private boolean addViewItemToItemsLayout(int index, boolean first) {
+//		View view = getItemView(index);
+//		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+//				LinearLayout.LayoutParams.WRAP_CONTENT);
+//		if (view != null) {
+//			if (first) {
+//				itemsLayout.addView(view, 0);
+//			} else {
+//				itemsLayout.addView(view,params);
+//			}
+//			itemsLayout.requestLayout();
+//			return true;
+//		}
+//		
+//		return false;
+		
 		View view = getItemView(index);
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT);
 		if (view != null) {
 			if (first) {
 				itemsLayout.addView(view, 0);
 			} else {
-				itemsLayout.addView(view,params);
+				itemsLayout.addView(view);
 			}
-			itemsLayout.requestLayout();
+			
 			return true;
 		}
 		
@@ -948,7 +931,7 @@ public class WheelView extends View {
 	 */
     private View getItemView(int index) {
     	
-    	Log.d("scr", "getItemView index:" + index);
+    	Log.d(SCR, "getItemView index:" + index);
 		if (viewAdapter == null || viewAdapter.getItemsCount() == 0) {
 			return null;
 		}

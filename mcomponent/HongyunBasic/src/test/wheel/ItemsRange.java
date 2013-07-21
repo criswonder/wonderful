@@ -60,4 +60,9 @@ public class ItemsRange {
 	public boolean contains(int index) {
 		return index >= getFirst() && index <= getLast();
 	}
+	
+	@Override
+	public String toString() {
+		return "first="+first+",count="+count;
+	}
 }

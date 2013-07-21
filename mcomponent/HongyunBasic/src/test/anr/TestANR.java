@@ -14,16 +14,16 @@ public class TestANR extends Activity {
 		btn.setText("fukkk");
 		LayoutParams params = new LayoutParams(100, 100);
 		setContentView(btn,params);
-//		long end = System.currentTimeMillis()+19000;
-//		while(System.currentTimeMillis()<end){
-//			Log.d("andymao", "in while loop");
-////			try {
-////				Thread.sleep(300);
-////			} catch (InterruptedException e) {
-////				// TODO Auto-generated catch block
-////				e.printStackTrace();
-////			}
-//		}
+		long end = System.currentTimeMillis()+9000;
+		while(System.currentTimeMillis()<end){
+			Log.d("andymao", "in while loop");
+//			try {
+//				Thread.sleep(300);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		}
 		
 		
 //		try {

@@ -9,7 +9,7 @@ import android.widget.TextView;
  * Numeric Wheel adapter.
  */
 public class NumericWheelAdapter extends AbstractWheelTextAdapter {
-    
+	private final String TAG=this.getClass().getSimpleName();
     /** The default min value */
     public static final int DEFAULT_MAX_VALUE = 9;
 

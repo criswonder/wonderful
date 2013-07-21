@@ -4,6 +4,7 @@ package test.wheel;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -14,6 +15,7 @@ import android.widget.Scroller;
  * Scroller class handles scrolling events and updates the 
  */
 public class WheelScroller {
+	private final String TAG=this.getClass().getSimpleName();
     /**
      * Scrolling listener interface
      */
@@ -125,6 +127,7 @@ public class WheelScroller {
     
             case MotionEvent.ACTION_MOVE:
                 // perform scrolling
+            	Log.d(TAG, "------------onTouchEvent MotionEvent.ACTION_MOVE----------");
                 int distanceX = (int)(event.getX() - lastTouchedX);
                 if (distanceX != 0) {
                     startScrolling();
@@ -135,6 +138,7 @@ public class WheelScroller {
         }
         
         if (!gestureDetector.onTouchEvent(event) && event.getAction() == MotionEvent.ACTION_UP) {
+        	Log.d(TAG, "------------onTouchEvent justify----------");
             justify();
         }
 
@@ -146,11 +150,12 @@ public class WheelScroller {
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             // Do scrolling in onTouchEvent() since onScroll() are not call immediately
             //  when user touch and move the wheel
+        	Log.d(TAG, "------------gestureListener onScroll----------");
             return true;
         }
         
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            //Log.d("scr", "onFling");
+            Log.d(TAG, "------------gestureListener onFling----------");
         	
         	lastScrollX = 0;
             final int maxX = 0x7FFFFFFF;

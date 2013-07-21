@@ -4,6 +4,7 @@ package test.wheel;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
  * Recycle stores wheel items to reuse. 
  */
 public class WheelRecycle {
+	private final String TAG=this.getClass().getSimpleName();
 	// Cached items
 	private List<View> items;
 	
@@ -39,6 +41,7 @@ public class WheelRecycle {
 	 * @return the new value of first item number
 	 */
 	public int recycleItems(LinearLayout layout, int firstItem, ItemsRange range) {
+		Log.d(TAG, "recycleItems	"+"firstItem={"+firstItem+",range="+range+"}");
 		int index = firstItem;
 		for (int i = 0; i < layout.getChildCount();) {
 			if (!range.contains(index)) {
