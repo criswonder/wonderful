@@ -599,6 +599,71 @@ public class WheelView extends View {
 		
 	}
 	/**
+	 * Builds view for measuring
+	 */
+	private void buildViewForMeasuring() {
+		// clear all items
+		Log.d(TAG, "buildViewForMeasuring begin============================");
+		if (itemsLayout != null) {
+			recycle.recycleItems(itemsLayout, firstItem, new ItemsRange());			
+		} else {
+			createItemsLayout();
+		}
+		
+		// add views
+		int addItems = visibleItems / 2;
+		Log.d(TAG, "buildViewForMeasuring	currentItem="+currentItem+",addItems="+addItems);
+		for (int i = currentItem + addItems; i >= currentItem - addItems; i--) {
+			Log.d(TAG, "buildViewForMeasuring	for loop i="+i);
+			if (addViewItemToItemsLayout(i, true)) {
+			    firstItem = i;
+			    Log.d(TAG, "buildViewForMeasuring	addViewItemToItemsLayout success");
+			}else{
+				Log.d(TAG, "buildViewForMeasuring	addViewItemToItemsLayout failed");
+			}
+		}
+		Log.d(TAG, "buildViewForMeasuring end============================");
+	}
+
+	/**
+		 * Adds view for item to items layout
+		 * @param index the item index
+		 * @param first the flag indicates if view should be first
+		 * @return true if corresponding item exists and is added
+		 */
+		private boolean addViewItemToItemsLayout(int index, boolean first) {
+	//		View view = getItemView(index);
+	//		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+	//				LinearLayout.LayoutParams.WRAP_CONTENT);
+	//		if (view != null) {
+	//			if (first) {
+	//				itemsLayout.addView(view, 0);
+	//			} else {
+	//				itemsLayout.addView(view,params);
+	//			}
+	//			itemsLayout.requestLayout();
+	//			return true;
+	//		}
+	//		
+	//		return false;
+			
+			View view = getItemView(index);
+			if (view != null) {
+				if (first) {
+					itemsLayout.addView(view, 0);
+				} else {
+					itemsLayout.addView(view);
+				}
+				
+				Log.d(TAG, "addViewItemToItemsLayout true index="+index+",first="+first);
+				return true;
+			}
+			Log.d(TAG, "addViewItemToItemsLayout false index="+index+",first="+first);
+			
+			return false;
+		}
+
+	/**
 	 * Draws items
 	 * @param canvas the canvas for drawing
 	 */
@@ -613,6 +678,7 @@ public class WheelView extends View {
 		//bylc
 		int left = -(currentItem - firstItem) * getItemWidth() + (getWidth()-getItemWidth()) / 2;
 		Log.d(TAG, "drawItems	left="+left);
+		Log.d(TAG, "special1 left="+left+",scrollingOffset="+scrollingOffset);
 		canvas.translate(left +scrollingOffset, padding);
 //		int left = (currentItem - firstItem) * getItemWidth() + (getItemWidth() - getWidth()) / 2;
 //		Log.d(TAG, "drawItems	left="+left);
@@ -774,11 +840,16 @@ public class WheelView extends View {
 				first--;
 			}
 			count++;
-			
+			Log.d(SCR, "rebuildItems	scrollingOffset:" + scrollingOffset);
 			// process empty items above the first or below the second
 			int emptyItems = scrollingOffset / getItemWidth();
+			Log.d(SCR, "rebuildItems	emptyItems:" + emptyItems);
+			Log.d(SCR, "rebuildItems	first:" + first);
 			first -= emptyItems;
-			count += Math.asin(emptyItems);
+			Log.d(SCR, "rebuildItems	first -= emptyItems:" + first);
+			double temp = Math.asin(emptyItems);
+			Log.d(SCR, "rebuildItems	Math.asin(emptyItems):" + temp);
+			count += temp;
 		}
 		return new ItemsRange(first, count);
 	}
@@ -789,11 +860,12 @@ public class WheelView extends View {
 	 * @return true if items are rebuilt
 	 */
 	private boolean rebuildItems() {
-		Log.d(SCR, "rebuildItems");
-		Log.d(SCR, "currentItem:" + currentItem);
-		Log.d(SCR, "firstItem:" + firstItem);
+		Log.d(SCR, "rebuildItems	===========================BEGIN");
+		Log.d(SCR, "rebuildItems	currentItem:" + currentItem);
+		Log.d(SCR, "rebuildItems	firstItem:" + firstItem);
 		boolean updated = false;
 		ItemsRange range = getItemsRange();
+		Log.d(SCR, "rebuildItems	range:" + range);
 		if (itemsLayout != null) {
 			int first = recycle.recycleItems(itemsLayout, firstItem, range);
 			updated = firstItem != first;
@@ -802,11 +874,20 @@ public class WheelView extends View {
 			createItemsLayout();
 			updated = true;
 		}
+//		Log.d(SCR, "rebuildItems	firstItem=" + firstItem+",updated="+updated);
 		
+		Log.d(SCR, "rebuildItems	firstItem=" + firstItem+"" +
+				", range.getFirst()="+  range.getFirst()+
+				",itemsLayout.getChildCount()=" +itemsLayout.getChildCount()+"" +
+				",range.getCount()="+range.getCount()+
+				",updated="+updated);
 		if (!updated) {
 			updated = firstItem != range.getFirst() || itemsLayout.getChildCount() != range.getCount();
 		}
 		
+		Log.d(SCR, "rebuildItems	firstItem=" + firstItem+"" +
+				", range.getFirst()="+  range.getFirst()+
+				",range.getLast()=" +range.getLast());
 		if (firstItem > range.getFirst() && firstItem <= range.getLast()) {
 			for (int i = firstItem - 1; i >= range.getFirst(); i--) {
 				if (!addViewItemToItemsLayout(i, true)) {
@@ -826,6 +907,8 @@ public class WheelView extends View {
 		}
 		firstItem = first;
 		
+		Log.d(SCR, "rebuildItems	firstItem=" + firstItem+",updated="+updated);
+		Log.d(SCR, "rebuildItems	===========================END");
 		return updated;
 	}
 	
@@ -853,68 +936,6 @@ public class WheelView extends View {
 	}
 
 	/**
-	 * Builds view for measuring
-	 */
-	private void buildViewForMeasuring() {
-		// clear all items
-		Log.d(TAG, "buildViewForMeasuring");
-		if (itemsLayout != null) {
-			recycle.recycleItems(itemsLayout, firstItem, new ItemsRange());			
-		} else {
-			createItemsLayout();
-		}
-		
-		// add views
-		int addItems = visibleItems / 2;
-		Log.d(TAG, "buildViewForMeasuring	currentItem="+currentItem+",addItems="+addItems);
-		for (int i = currentItem + addItems; i >= currentItem - addItems; i--) {
-			Log.d(TAG, "buildViewForMeasuring	for loop i="+i);
-			if (addViewItemToItemsLayout(i, true)) {
-			    firstItem = i;
-			    Log.d(TAG, "buildViewForMeasuring	addViewItemToItemsLayout success");
-			}else{
-				Log.d(TAG, "buildViewForMeasuring	addViewItemToItemsLayout failed");
-			}
-		}
-	}
-
-	/**
-	 * Adds view for item to items layout
-	 * @param index the item index
-	 * @param first the flag indicates if view should be first
-	 * @return true if corresponding item exists and is added
-	 */
-	private boolean addViewItemToItemsLayout(int index, boolean first) {
-//		View view = getItemView(index);
-//		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-//				LinearLayout.LayoutParams.WRAP_CONTENT);
-//		if (view != null) {
-//			if (first) {
-//				itemsLayout.addView(view, 0);
-//			} else {
-//				itemsLayout.addView(view,params);
-//			}
-//			itemsLayout.requestLayout();
-//			return true;
-//		}
-//		
-//		return false;
-		
-		View view = getItemView(index);
-		if (view != null) {
-			if (first) {
-				itemsLayout.addView(view, 0);
-			} else {
-				itemsLayout.addView(view);
-			}
-			
-			return true;
-		}
-		
-		return false;
-	}
-	
-	/**
 	 * Checks whether intem index is valid
 	 * @param index the item index
 	 * @return true if item index is not out of bounds or the wheel is cyclic
@@ -931,11 +952,13 @@ public class WheelView extends View {
 	 */
     private View getItemView(int index) {
     	
-    	Log.d(SCR, "getItemView index:" + index);
+    	Log.d(SCR, "getItemView	index:" + index);
 		if (viewAdapter == null || viewAdapter.getItemsCount() == 0) {
 			return null;
 		}
 		int count = viewAdapter.getItemsCount();
+		
+		Log.d(SCR, "getItemView isValidItemIndex(index):" + isValidItemIndex(index));
 		if (!isValidItemIndex(index)) {
 			return viewAdapter.getEmptyItem(recycle.getEmptyItem(), itemsLayout);
 		} else {
@@ -944,7 +967,9 @@ public class WheelView extends View {
 			}
 		}
 		
+		Log.d(SCR, "getItemView	index:" + index+",count="+count);
 		index %= count;
+		Log.d(SCR, "getItemView	index:" + index);
 		return viewAdapter.getItem(index, recycle.getItem(), itemsLayout);
 	}
 	

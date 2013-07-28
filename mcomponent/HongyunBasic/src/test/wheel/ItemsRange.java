@@ -63,6 +63,6 @@ public class ItemsRange {
 	
 	@Override
 	public String toString() {
-		return "first="+first+",count="+count;
+		return "{first="+first+",count="+count+"}";
 	}
 }

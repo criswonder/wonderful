@@ -41,23 +41,49 @@ public class WheelRecycle {
 	 * @return the new value of first item number
 	 */
 	public int recycleItems(LinearLayout layout, int firstItem, ItemsRange range) {
-		Log.d(TAG, "recycleItems	"+"firstItem={"+firstItem+",range="+range+"}");
+		Log.d(TAG, "recycleItems	"+"firstItem="+firstItem+",range="+range+", layout.getChildCount()="+layout.getChildCount());
 		int index = firstItem;
+		int forloop = 0;
 		for (int i = 0; i < layout.getChildCount();) {
+			Log.d(TAG, "recycleItems	for loop"+forloop+":index="+index+",i="+i+",firstItem="+firstItem);
 			if (!range.contains(index)) {
+				Log.d(TAG, "recycleItems	!range.contains(index)");
 				recycleView(layout.getChildAt(i), index);
 				layout.removeViewAt(i);
 				if (i == 0) { // first item
 					firstItem++;
+					Log.d(TAG, "recycleItems	!range.contains(index) && i==0");
 				}
 			} else {
 				i++; // go to next item
 			}
 			index++;
+			forloop++;
 		}
 		return firstItem;
 	}
 	
+	/**
+	 * Adds view to cache. Determines view type (item view or empty one) by index.
+	 * @param view the view to be cached
+	 * @param index the index of view
+	 */
+	private void recycleView(View view, int index) {
+		int count = wheel.getViewAdapter().getItemsCount();
+	
+		if ((index < 0 || index >= count) && !wheel.isCyclic()) {
+			// empty view
+			Log.d(TAG, "recycleView	"+"index="+index+",add to emptyItems");
+			emptyItems = addView(view, emptyItems);
+		} else {
+			while (index < 0) {
+				index = count + index;
+			}
+			index %= count;
+			items = addView(view, items);
+		}
+	}
+
 	/**
 	 * Gets item view
 	 * @return the cached view
@@ -101,26 +127,6 @@ public class WheelRecycle {
 		return cache;
 	}
 
-	/**
-	 * Adds view to cache. Determines view type (item view or empty one) by index.
-	 * @param view the view to be cached
-	 * @param index the index of view
-	 */
-	private void recycleView(View view, int index) {
-		int count = wheel.getViewAdapter().getItemsCount();
-
-		if ((index < 0 || index >= count) && !wheel.isCyclic()) {
-			// empty view
-			emptyItems = addView(view, emptyItems);
-		} else {
-			while (index < 0) {
-				index = count + index;
-			}
-			index %= count;
-			items = addView(view, items);
-		}
-	}
-	
 	/**
 	 * Gets view from specified cache.
 	 * @param cache the cache

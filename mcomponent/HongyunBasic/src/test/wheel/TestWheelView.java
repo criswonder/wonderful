@@ -20,7 +20,7 @@ public class TestWheelView extends Activity {
 		setContentView(R.layout.activity_test_wheelview);
 		
 		 WheelView zWheel = (WheelView)findViewById(R.id.ssydj1_wheel);
-         mSSYDJ1Adapter = new NumericWheelAdapter(this, 10, 15);
+         mSSYDJ1Adapter = new NumericWheelAdapter(this, 10, 12);
          mSSYDJ1Adapter.setCurrentTextColor(0xffb22727);
          zWheel.setViewAdapter(mSSYDJ1Adapter);
          zWheel.setCurrentItem(1);
