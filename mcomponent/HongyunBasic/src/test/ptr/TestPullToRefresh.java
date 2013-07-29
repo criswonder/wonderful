@@ -94,7 +94,7 @@ public class TestPullToRefresh extends Activity implements OnRefreshListener {
 				mListView.onRefreshComplete();
 			}
 
-		}.execute(null);
+		}.execute();
 	}
 
 	private OnRefreshListener refreshListener = new OnRefreshListener() {
