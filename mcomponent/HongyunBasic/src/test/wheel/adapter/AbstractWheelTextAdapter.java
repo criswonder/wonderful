@@ -19,6 +19,7 @@ import com.example.hongyunbasic.R;
  * Abstract wheel adapter provides common functionality for adapters.
  */
 public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
+	private final String TAG="AbstractWheelTextAdapter";
     
     /** Text view resource. Used as a default view for adapter. */
     public static final int TEXT_VIEW_ITEM_RESOURCE = -1;
@@ -52,8 +53,6 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
     // Empty items resources
     protected int emptyItemResourceId;
 
-	private String TAG = "AbstractWheelTextAdapter";
-	
     /**
      * Constructor
      * @param context the current context
@@ -221,8 +220,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
         view.setLines(1);
         view.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
         view.setWidth(viewWidth);
-        view.setBackgroundColor(R.color.gold);
-        Log.d(TAG , "*************textView.setText(200)");
+        Log.d(TAG , "configureTextView	viewWidth="+viewWidth);
         //view.setGravity(Gravity.CENTER_HORIZONTAL);
 //        if(view.getMeasuredHeight()>0)
 //        {
