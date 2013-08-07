@@ -273,6 +273,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="test.galaxys4.popupdialog.TestLayout"
+            android:label="TestLayout" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE1" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="test.webview.TestWebView"
             android:label="测试webview" >
            <!--  <intent-filter>
