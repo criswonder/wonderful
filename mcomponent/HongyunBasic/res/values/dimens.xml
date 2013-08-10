@@ -500,4 +500,8 @@
     <dimen name="dimen_498_dip">498.0dip</dimen>
     <dimen name="dimen_499_dip">499.0dip</dimen>
     <dimen name="dimen_500_dip">500.0dip</dimen>
+    
+    	<dimen name="dialog_spen_btn_width">90dp</dimen>
+	<dimen name="dialog_spen_btn_height">66.6dp</dimen>
+	<dimen name="dialog_spen_image_width">270dp</dimen>
 </resources>
