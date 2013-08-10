@@ -43,7 +43,7 @@ public class WheelView extends View {
 	private int currentItem = 0;
 	
 	// Count of visible items
-	private int visibleItems = DEF_VISIBLE_ITEMS;
+	private final static int VISIBLEITEMS = DEF_VISIBLE_ITEMS;
 	
 	// Item height
 	//private int itemHeight = 0;
@@ -186,7 +186,7 @@ public class WheelView extends View {
 	 * @return the count of visible items
 	 */
 	public int getVisibleItems() {
-		return visibleItems;
+		return VISIBLEITEMS;
 	}
 
 	/**
@@ -467,7 +467,7 @@ public class WheelView extends View {
 			itemWidth = layout.getChildAt(0).getMeasuredWidth();
 		}
 
-		int desired = itemWidth * visibleItems - itemWidth * ITEM_OFFSET_PERCENT / 50;
+		int desired = itemWidth * VISIBLEITEMS - itemWidth * ITEM_OFFSET_PERCENT / 50;
 
 	return Math.max(desired, getSuggestedMinimumWidth());
 }
@@ -500,8 +500,8 @@ public class WheelView extends View {
 		return itemWidth;
 	}
 	
-	Log.d(TAG, "getItemWidth	getWidth() / visibleItems="+getWidth() / visibleItems);
-	return getWidth() / visibleItems;
+	Log.d(TAG, "getItemWidth	getWidth() / visibleItems="+getWidth() / VISIBLEITEMS);
+	return getWidth() / VISIBLEITEMS;
 }
 
 	private int calculateLayoutHeight(int heightSize, int mode) {
@@ -600,6 +600,7 @@ public class WheelView extends View {
 	}
 	/**
 	 * Builds view for measuring
+	 * OnMeasure的时候调用
 	 */
 	private void buildViewForMeasuring() {
 		// clear all items
@@ -611,7 +612,7 @@ public class WheelView extends View {
 		}
 		
 		// add views
-		int addItems = visibleItems / 2;
+		int addItems = VISIBLEITEMS / 2;
 		Log.d(TAG, "buildViewForMeasuring	currentItem="+currentItem+",addItems="+addItems);
 		for (int i = currentItem + addItems; i >= currentItem - addItems; i--) {
 			Log.d(TAG, "buildViewForMeasuring	for loop i="+i);
@@ -677,8 +678,10 @@ public class WheelView extends View {
 //		canvas.translate(PADDING, - top + scrollingOffset);
 		//bylc
 		int left = -(currentItem - firstItem) * getItemWidth() + (getWidth()-getItemWidth()) / 2;
-		Log.d(TAG, "drawItems	left="+left);
-		Log.d(TAG, "special1 left="+left+",scrollingOffset="+scrollingOffset);
+		Log.d(TAG, "drawItems left="+left+",scrollingOffset="+scrollingOffset);
+		int sum = left + scrollingOffset;
+		Log.d(TAG, "drawItems	sum="+sum);
+		Log.d(TAG, "drawItems	itemsLayout.getChildCount()="+itemsLayout.getChildCount());
 		canvas.translate(left +scrollingOffset, padding);
 //		int left = (currentItem - firstItem) * getItemWidth() + (getItemWidth() - getWidth()) / 2;
 //		Log.d(TAG, "drawItems	left="+left);
@@ -823,6 +826,7 @@ public class WheelView extends View {
 	 * @return the items range
 	 */
 	private ItemsRange getItemsRange() {
+		Log.d(SCR, "getItemsRange	===========================BEGIN");
         if (getItemWidth() == 0) {
             return null;
         }
@@ -830,27 +834,32 @@ public class WheelView extends View {
 		int first = currentItem;
 		int count = 1;
 		
+		Log.d(SCR, "getItemsRange	first:" + first+",count:1");
 		while (count * getItemWidth() < getWidth()) {
 			first--;
-			count += 2; // top + bottom items
+			count += 2; 
 		}
+		Log.d(SCR, "getItemsRange	after while loop, first:" + first+",count:"+count);
 		
 		if (scrollingOffset != 0) {
 			if (scrollingOffset > 0) {
 				first--;
 			}
 			count++;
-			Log.d(SCR, "rebuildItems	scrollingOffset:" + scrollingOffset);
+			Log.d(SCR, "getItemsRange	first:" + first+",count:"+count);
+			Log.d(SCR, "getItemsRange	scrollingOffset:" + scrollingOffset);
 			// process empty items above the first or below the second
 			int emptyItems = scrollingOffset / getItemWidth();
-			Log.d(SCR, "rebuildItems	emptyItems:" + emptyItems);
-			Log.d(SCR, "rebuildItems	first:" + first);
+			Log.d(SCR, "getItemsRange	emptyItems:" + emptyItems);
+			Log.d(SCR, "getItemsRange	first:" + first);
 			first -= emptyItems;
-			Log.d(SCR, "rebuildItems	first -= emptyItems:" + first);
+			Log.d(SCR, "getItemsRange	first -= emptyItems:" + first);
 			double temp = Math.asin(emptyItems);
-			Log.d(SCR, "rebuildItems	Math.asin(emptyItems):" + temp);
+			Log.d(SCR, "getItemsRange	Math.asin(emptyItems):" + temp);
 			count += temp;
 		}
+		Log.d(SCR, "getItemsRange	finally, first:" + first+",count:"+count);
+		Log.d(SCR, "getItemsRange	===========================END");
 		return new ItemsRange(first, count);
 	}
 	
@@ -928,7 +937,7 @@ public class WheelView extends View {
 	 * Creates item layouts if necessary
 	 */
 	private void createItemsLayout() {
-		Log.d(TAG, "createItemsLayout");
+		Log.d(TAG, "createItemsLayout by new LinearLayout()");
 		if (itemsLayout == null) {
 			itemsLayout = new LinearLayout(getContext());
 			itemsLayout.setOrientation(LinearLayout.HORIZONTAL);

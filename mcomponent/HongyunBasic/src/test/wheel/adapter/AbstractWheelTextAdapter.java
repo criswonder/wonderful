@@ -187,6 +187,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
                 if (text == null) {
                     text = "";
                 }
+                Log.d(TAG , "getItem	text="+text);
                 if (itemResourceId == TEXT_VIEW_ITEM_RESOURCE) {
                     configureTextView(textView);
                 }
