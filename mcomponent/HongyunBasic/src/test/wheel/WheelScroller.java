@@ -97,7 +97,9 @@ public class WheelScroller {
 
         //lastScrollY = 0;
         lastScrollX = 0;
-        
+        /*-----------------------------------------------------------------------------------------------
+         * dx Horizontal distance to travel. Positive numbers will scroll the content to the left.
+         -----------------------------------------------------------------------------------------------*/
         scroller.startScroll(0, 0,distance,0, time != 0 ? time : SCROLLING_DURATION);
         setNextMessage(MESSAGE_SCROLL);
         

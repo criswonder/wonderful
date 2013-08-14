@@ -212,11 +212,13 @@ public class WheelView extends View {
     private DataSetObserver dataObserver = new DataSetObserver() {
         @Override
         public void onChanged() {
+        	Log.d(SCR, "dataObserver	onChanged ");
             invalidateWheel(false);
         }
 
         @Override
         public void onInvalidated() {
+        	Log.d(SCR, "dataObserver	onChanged ");
             invalidateWheel(true);
         }
     };
@@ -228,6 +230,7 @@ public class WheelView extends View {
 	 * @param viewAdapter the view adapter
 	 */
 	public void setViewAdapter(WheelViewAdapter viewAdapter) {
+		Log.d(SCR, "setViewAdapter ");
 	    if (this.viewAdapter != null) {
 	        this.viewAdapter.unregisterDataSetObserver(dataObserver);
 	    }
